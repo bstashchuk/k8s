@@ -17,6 +17,14 @@ app.get("/nginx", async (req, res) => {
   res.send(body)
 })
 
+app.get("/jsonplaceholder", async (req, res) => {
+  const url = "https://jsonplaceholder.typicode.com/todos";
+  const response = await fetch(url);
+  const body = await response.text();
+  res.setHeader("Content-Type", "application/json");
+  res.send(body);
+});
+
 app.listen(PORT, () => {
   console.log(`Web server is listening at port ${PORT}`)
 })
